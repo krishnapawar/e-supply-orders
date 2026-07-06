@@ -1,0 +1,88 @@
+//Create Virtual Environment
+python -m venv venv
+
+
+//Activate Virtual Environment
+venv\Scripts\activate
+
+//update pip
+python -m pip install --upgrade pip
+
+
+//install fastapi 
+pip install fastapi uvicorn
+
+//to see install packages
+pip list
+
+
+//Run Server
+uvicorn app.main:app --reload
+
+
+//PostgreSQL + SQLAlchemy
+pip install sqlalchemy alembic psycopg2-binary python-dotenv
+
+-> SQLAlchemy → ORM (similar to Laravel Eloquent)
+-> Alembic → Database migrations (similar to Laravel migrations)
+-> psycopg2-binary → PostgreSQL driver
+-> python-dotenv → Load environment variables from .env
+
+
+//Verify
+pip show sqlalchemy
+pip show psycopg2-binary
+
+
+// Why PostgreSQL?
+
+-> Because most FastAPI production applications use it.
+
+1) Database	        :-Recommended for
+2) SQLite	        :-Learning and small projects
+3) MySQL	        :-Many PHP/Laravel applications
+4) PostgreSQL	    :-FastAPI, Django, enterprise Python projects
+
+-> PostgreSQL also supports advanced features like JSON columns, arrays, and powerful indexing, which make it a common choice for Python backends.
+
+
+//Create Migration
+alembic revision --autogenerate -m "create users table"
+
+
+//run migrate 
+alembic upgrade head
+
+
+
+//Current Project Progress
+✅ FastAPI
+✅ Virtual Environment
+✅ PostgreSQL
+✅ Docker
+✅ SQLAlchemy
+✅ Alembic
+✅ Repository Pattern
+✅ Service Layer
+✅ Product CRUD
+
+
+//auth api Install packages
+pip install python-jose[cryptography] passlib[bcrypt] python-multipart
+
+| Package               | Purpose                           |
+| ----------------------| --------------------------------- |
+| python-jose           | Create & verify JWT tokens        |
+| passlib               | Hash passwords using bcrypt       |
+| python-multipart      | Handle form data for OAuth2 login |
+
+
+//unstall packages
+pip uninstall bcrypt
+
+
+//install espasifice version of packages
+pip install bcrypt==4.1.3
+
+//connect PostgreSQL tememinal on docker Server
+docker exec -it ecommerce-db psql -U postgres -d ecommerce

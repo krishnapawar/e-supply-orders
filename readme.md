@@ -86,6 +86,13 @@ pip install python-jose[cryptography] passlib[bcrypt] python-multipart
 
 ---
 
+# Igenerate it automatically requirements
+
+```bash
+pip freeze > requirements.txt
+```
+---
+
 # Install All Packages
 
 If using a requirements file:

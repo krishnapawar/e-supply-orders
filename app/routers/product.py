@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
+from app.core.permissions import require_role
 from app.database.dependencies import get_db
 from app.schemas.product import (
     ProductCreate,
@@ -62,6 +63,7 @@ def update_product(
 )
 def delete_product(
     product_id: int,
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user = Depends(require_role("admin"))
 ):
     return ProductService.delete_product(db, product_id)

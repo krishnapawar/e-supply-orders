@@ -15,9 +15,9 @@ class ProductService:
         return ProductRepository.create(db, product)
 
     @staticmethod
-    def get_products(db: Session):
+    def get_products(db: Session, params):
 
-        return ProductRepository.get_all(db)
+        return ProductRepository.get_all(db, params)
 
     @staticmethod
     def get_product(db: Session, product_id: int):

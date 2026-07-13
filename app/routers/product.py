@@ -9,6 +9,8 @@ from app.schemas.product import (
     ProductResponse
 )
 from app.services.product_service import ProductService
+from app.core.pagination import pagination_params
+from app.schemas.pagination import PaginationParams
 
 router = APIRouter()
 
@@ -25,14 +27,25 @@ def create_product(
     return ProductService.create_product(db, product)
 
 
-@router.get(
-    "",
-    response_model=list[ProductResponse]
-)
+# @router.get(
+#     "",
+#     response_model=list[ProductResponse]
+# )
+# def get_products(
+#     db: Session = Depends(get_db)
+# ):
+#     return ProductService.get_products(db)
+
+@router.get("")
 def get_products(
+    params: PaginationParams = Depends(pagination_params),
     db: Session = Depends(get_db)
 ):
-    return ProductService.get_products(db)
+    print("parms==>",params)
+    return ProductService.get_products(
+        db,
+        params
+    )
 
 
 @router.get(

@@ -8,7 +8,7 @@ from app.schemas.product import (
     ProductUpdate,
     ProductResponse
 )
-from app.services.product_service import ProductService
+from app.services.product import ProductService
 from app.core.pagination import pagination_params
 from app.schemas.pagination import PaginationParams
 

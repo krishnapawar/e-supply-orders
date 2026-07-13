@@ -31,12 +31,12 @@ class BaseRepository:
 
         return obj
     
-    # def get_all(cls, db):
+    def get_all(cls, db):
 
-    #     return db.query(cls.model).all()
+        return db.query(cls.model).all()
     
     @classmethod
-    def get_all(cls, db, params):
+    def paginate(cls, db, params):
         query = db.query(cls.model)
         if params.search:
             query = query.filter(

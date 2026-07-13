@@ -11,6 +11,7 @@ from app.exceptions.handlers import (
 from app.core.permissions import require_role
 from app.routers.product import router as product_router
 from app.routers.auth import router as auth_router
+from app.routers.category import router as category_router
 
 from app.database.database import engine
 from app.database.base import Base
@@ -21,7 +22,7 @@ from app.middleware.authentication import AuthenticationMiddleware
 from app.middleware.cors import setup_cors
 
 # Create tables
-Base.metadata.create_all(bind=engine)
+# Base.metadata.create_all(bind=engine)
 
 app = FastAPI(
     title="Ecommerce API",
@@ -78,4 +79,10 @@ app.include_router(
     product_router,
     prefix="/products",
     tags=["Products"]
+)
+
+app.include_router(
+    category_router,
+    prefix="/categories",
+    tags=["Categories"]
 )

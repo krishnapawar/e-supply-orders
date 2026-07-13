@@ -2,7 +2,7 @@ from fastapi import HTTPException
 from sqlalchemy.orm import Session
 
 from app.models.product import Product
-from app.repositories.product_repository import ProductRepository
+from app.repositories.product import ProductRepository
 
 
 class ProductService:
@@ -17,7 +17,7 @@ class ProductService:
     @staticmethod
     def get_products(db: Session, params):
 
-        return ProductRepository.get_all(db, params)
+        return ProductRepository.paginate(db, params)
 
     @staticmethod
     def get_product(db: Session, product_id: int):
